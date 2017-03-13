@@ -64,11 +64,13 @@ Article.fetchAll = function() {
       method: 'GET',
       success: function(d) {
         localStorage.setItem('rawData', JSON.stringify(d));
+        Article.loadAll(JSON.parse(localStorage.rawData));
+        articleView.initIndexPage();
       },
       error: function(error) {
         console.log('in error handler', error);
       }
     });
-
+    
   }
 }
